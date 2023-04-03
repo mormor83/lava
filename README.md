@@ -36,4 +36,6 @@ Hello, you are currently working with 10.244.0.21
 Your Computer Name is: lava2-68bd47f75f-pzq9v
 ```
 
-splitting intermidiatlly between lava1 and lava2 
+splitting intermidiatlly between lava1 and lava2 with:
+
+60% of the calls will go to lava1, 40% of the calls will go to lava2
