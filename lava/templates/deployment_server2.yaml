@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lava2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: lava2
+      app.kubernetes.io/instance: lava2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: lava2
+        app.kubernetes.io/instance: lava2
+    spec:
+      containers:
+        - name: server2
+          image: "docker.io/library/lava:1.0.3"
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+              limits:
+                cpu: 100m
+                memory: 128Mi
+              requests:
+                cpu: 100m
+                memory: 128Mi

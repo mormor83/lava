@@ -1,0 +1,22 @@
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: canary-lava1
+  namespace: lava
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "60"
+
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: lavanetbook.xyz
+    http:
+      paths:
+        - path: '/'
+          pathType: Prefix
+          backend:
+            service:
+              name: lava1
+              port:
+                number: 8081
