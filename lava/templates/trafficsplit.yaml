@@ -6,7 +6,7 @@ spec:
   service: canary
   backends:
   - service: lava1
-    weight: 100
+    weight: 60
   - service: lava2
-    weight: 0
+    weight: 40
 
