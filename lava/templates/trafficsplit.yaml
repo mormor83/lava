@@ -1,0 +1,12 @@
+apiVersion: split.smi-spec.io/v1alpha3
+kind: TrafficSplit
+metadata:
+  name: canary-lava
+spec:
+  service: canary
+  backends:
+  - service: lava1
+    weight: 100
+  - service: lava2
+    weight: 0
+

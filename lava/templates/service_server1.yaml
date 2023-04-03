@@ -3,13 +3,14 @@ kind: Service
 metadata:
   name: lava1
   labels:
-    app.kubernetes.io/name: lava1
-    app.kubernetes.io/instance: lava1
+        app: books
+        server: lava1
 spec:
+  type: LoadBalancer 
   ports:
-    - port: 8081
+    - port: 5000
       targetPort: 5000
       protocol: TCP
   selector:
-    app.kubernetes.io/name: lava1
-    app.kubernetes.io/instance: lava1
+        app: books
+        server: lava1

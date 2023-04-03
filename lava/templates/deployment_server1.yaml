@@ -6,18 +6,21 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: lava1
-      app.kubernetes.io/instance: lava1
+        app: books
+        server: lava1
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: lava1
-        app.kubernetes.io/instance: lava1
+        app: books
+        server: lava1
     spec:
       containers:
         - name: server1
-          image: "docker.io/library/lava:1.0.3"
+          image: "docker.io/library/lava:1.0.5"
           imagePullPolicy: Never
+          env:
+          - name: FLASK_RUN_PORT
+            value: "5000"
           ports:
             - name: http
               containerPort: 5000

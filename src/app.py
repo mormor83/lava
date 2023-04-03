@@ -4,13 +4,10 @@ from flask import *
 import logging
 import urllib3
 import socket   
-
+import os
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-log = logging.getLogger('werkzeug')
-log.disabled = True
 
 # get the root logger
 logger = logging.getLogger()
@@ -30,6 +27,7 @@ fileHandler.setFormatter(logFormatter)
 logger.addHandler(fileHandler)
 
 app = Flask(__name__)
+
 
 class InvalidISBNUsage(Exception):
     status_code = 400
@@ -74,4 +72,4 @@ def book():
     return book_info
 
 
-app.run(debug=True)
+app.run()
